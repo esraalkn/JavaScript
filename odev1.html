@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+ 
+
+    <script>
+//1.soru
+var bakiye = 2000;
+var adsoyad = 'sena ';
+
+var hesapA = {
+    ad : 'Sena ',
+    hesapNo : '12345678',
+    bakiye : 2000,
+    ekHesap : 1000
+}
+
+var hesapB= {
+    ad : 'Emel ',
+    hesapNo : '12356479',
+    bakiye : 3000,
+    ekHesap : 2000
+}
+
+
+function paraCek(hesap,miktar){
+    console.log(`Merhaba ${hesap.ad}`);
+
+    if(hesap.bakiye >= miktar){
+        hesap.bakiye = hesap.bakiye - miktar;
+        console.log('paranızı alabilirsiniz');
+    }else {
+        var toplam = hesap.bakiye + hesap.ekHesap;
+
+        if(toplam>=miktar){
+            if(confirm('ek hesabınızı kullanmak istermisiniz')){
+                console.log('paranızı alabilirsiniz');
+                var bakiye = hesap.bakiye;
+                var ekhesap = miktar - bakiye;
+                hesap.bakiye = 0;
+                hesap.ekhesap = hesap.ekhesap - ekhesap;
+            }else{
+                console.log(`${hesap.hesapNo} nolu hesabınızda ${miktar} TL bulunmamaktadır.`);
+            }
+        }else{
+            console.log('üzgünüz bakiye yetersiz');
+        }
+    }
+
+}
+
+paraCek(hesapA,2000);
+paraCek(hesapA,1100);
+
+
+
+//2.soru
+var sayi = Math.floor((Math.random()*10)+1);
+var hak,can;
+var tahmin,sayac=0;
+can = Number(prompt('kaç kerede bileceksiniz ?'));
+hak = can;
+
+console.log(sayi);
+
+while(hak>0){
+    hak--;
+    sayac++;
+    tahmin = Number(prompt('bir sayı giriniz'));
+
+    if(sayi == tahmin){
+        console.log(`Tebrikler ${sayac} defada bildiniz.`);
+        console.log(`puan : ${100 - (100/can)*(sayac-1)}`);
+        break;
+    }else if (sayi > tahmin){
+        console.log('yukarı');
+    }else{
+        console.log('aşağı');
+    }
+
+    if(hak==0){
+        console.log('hakkınız bitti. sayı :'+sayi);
+    }
+}
+
+     /* 1.proje function paracek (hesap, miktar)
+Kullanıcı bankamatiğe gelecek hesabına çekmek istediği miktarı girecek ve bu miktar hesabında varsa kullanıcı
+bu para verilecek.
+
+Ancak çekilmek istenen miktar hesabında yoksa bu sefer ek hesabı kontrol edilecek ve eğer  ek hesapta miktar varsa
+Bu durumda kullanıcı bu para verecek.
+*/
+
+
+/* 2.proje while ile yapılacak
+   Demo Loops : Sayı Tahmin Oyunu
+
+   1-10 arası rastgele sayı üretilen bir sayıyı aşağı yukarı ifadeleri ile buldurmaya çalışın.
+   Yani 7 rakamı için 3 yazdı mesela yukarı git diyeceksiniz.
+
+   ** puanlama yapın.
+   ** kullanıcı kaç kerede bileceğini belirtebilsin.Bu belirtmeden sonra örneğin 5 kerede bileceğim dediğinde 
+   her yanlış için 20 puan düşsün  . eğer 10 kerede bileceğim derse 10 puan düşsün
+*/
+    </script>
+    
+</body>
+</html>
+
+
